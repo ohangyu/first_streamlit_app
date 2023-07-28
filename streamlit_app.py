@@ -1,5 +1,7 @@
 import streamlit
 import pandas
+import requests
+import snowflake.connector
 
 streamlit.title('My Parents New Healthy Diner')
 
@@ -21,8 +23,6 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Display the table on the page.
 streamlit.dataframe(my_fruit_list)
 
-
-import requests
 streamlit.header("Fruityvice Fruit Advice!")
 fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
 streamlit.write('The user entered ', fruit_choice)
