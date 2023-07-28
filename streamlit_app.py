@@ -36,12 +36,14 @@ my_cur = my_cnx.cursor()
 my_cur.execute("select * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
 streamlit.header("Hello from Snowflake:")
-streamlit.datarows(my_data_rows)
+streamlit.dataframe(my_data_rows)
 
 add_my_fruit = streamlit.text_input('What fruit would you like to add?','Kiwi')
 streamlit.write('Thanks for adding ', fruit_choice)
 fruityvice_added = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 fruityvice_added_normalized = pandas.json_normalize(fruityvice_added.json())
 streamlit.dataframe(fruityvice_added_normalized)
+
+my_cur.execute("insert into fruit_load_list values ('from steamlist')")
 
 
